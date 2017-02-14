@@ -1,0 +1,19 @@
+<ion-view view-title="Video List">
+	<ion-content>
+		<div style="margin-bottom: 80px;" >
+			<div class="list card" ng-repeat="video in videos" ng-click="playVideo(video)">
+				<div class="item item-image">
+					<img ng-src="{{video.snippet.thumbnails.high.url}}">
+				</div>
+				<div class="item item-text-wrap">
+					<h2>{{video.snippet.title}}</h2>
+					<p> created date : {{video.snippet.publishedAt | date:'dd-MMM-yyyy'}}</p>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+	<ion-tabs class="tabs-positive tabs-icon-top">
+		<ion-tab title="Recent" icon-on="ion-ios-clock" icon-off="ion-ios-clock-outline"></ion-tab>
+		<ion-tab title="All Video" icon-on="ion-ios-videocam" icon-off="ion-ios-videocam-outline"></ion-tab>
+	</ion-tabs>
+</ion-view>
