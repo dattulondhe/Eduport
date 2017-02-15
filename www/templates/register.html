@@ -1,0 +1,74 @@
+<ion-view>
+	<ion-header-bar class="bar-positive">
+		<div class="buttons" ng-click="goBack()">
+			<button class="button ion-android-arrow-back"  style="font-size: 20px;" ></button>
+		</div>
+		<h1 class="title" >Register</h1>
+	</ion-header-bar>
+	<ion-content>
+		<form name="login" novalidate="novalidate">
+			<div class="list">
+				<label class="item item-input">
+					<input  name="Fname" type="text" placeholder='Name' ng-model="userdata.Fname" autocorrect="off"  ng-pattern="/^[a-zA-Z\s ]+$/"  required/>
+				</label>
+				<p class="label-color" ng-show="login.Fname.$error.required && login.submitted">
+					* Please enter your name.
+				</p>
+				<p class="label-color"  ng-show="login.Fname.$error.pattern && !login.Fname.$pristine">
+					* Please enter valid name.
+				</p>
+				<label class="item item-input">
+					<input  name="mobile" type="number" placeholder='Mobile no.' ng-model="userdata.mobile" autocorrect="off" ng-maxlength="10" ng-minlength="10"   required/>
+				</label>
+				<p class="label-color" ng-show="login.mobile.$error.required && login.submitted">
+					* Please enter your mobile no.
+				</p>
+				<p class="label-color" ng-show="login.mobile.$error.minlength && !login.mobile.$pristine">
+					* Mobile no must be 10 digits.
+				</p>
+				<p class="label-color" ng-show="login.mobile.$error.maxlength && !login.mobile.$pristine">
+					* Mobile no must be 10 digits.
+				</p>
+				<label class="item item-input">
+					<input id="login_email" name="email" type="email" placeholder='Email id' ng-model="userdata.email" autocorrect="off"  ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/' required/>
+				</label>
+				<p class="label-color" ng-show="login.email.$error.required && login.submitted">
+					* Please enter your email id.
+				</p>
+				<p class="label-color"
+				ng-show="login.email.$error.pattern && !login.email.$pristine">
+				* Given email id is not valid.
+			</p>
+			<label class="item item-input">
+				<input id="login_password" name="password" type="password" placeholder='Password' ng-model="userdata.password"  autocorrect="off"  ng-maxlength="15" ng-minlength="6" required>
+			</label>
+			<p class="label-color" ng-show="login.password.$error.minlength && !login.password.$pristine">
+				* Password must be minimum 6 character.
+			</p>
+			<p class="label-color" ng-show="login.password.$error.maxlength && !login.password.$pristine">
+				* Password must be maximum 15 character.
+			</p>
+			<p class="label-color" ng-show="login.password.$error.required && login.submitted">
+				* Please enter your password.
+			</p>
+			<label class="item item-input">
+				<input  name="city" type="text" placeholder='City' ng-model="userdata.city" autocorrect="off"   required/>
+			</label>
+			<p class="label-color" ng-show="login.city.$error.required && login.submitted">
+				* Please enter your city.
+			</p>
+			<label class="item item-input">
+				<textarea rows="3" name="address" type="text" placeholder='Address' ng-model="userdata.address" autocorrect="off" style="resize: none;"  required/></textarea>
+			</label>
+			<p class="label-color" ng-show="login.address.$error.required && login.submitted">
+				* Please enter your address.
+			</p>
+		</div>
+		<div class="row link">
+			<button type="submit" class="button button-block button-positive sub register-form margin-top-10 primary-color"  ng-click="register(login)">
+				Register
+			</button>
+		</div>
+	</form>
+</ion-content>
+</ion-view>

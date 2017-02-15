@@ -1,19 +1,26 @@
-<ion-view view-title="Video List">
-	<ion-content>
-		<div style="margin-bottom: 80px;" >
-			<div class="list card" ng-repeat="video in videos" ng-click="playVideo(video)">
-				<div class="item item-image">
-					<img ng-src="{{video.snippet.thumbnails.high.url}}">
-				</div>
-				<div class="item item-text-wrap">
-					<h2>{{video.snippet.title}}</h2>
-					<p> created date : {{video.snippet.publishedAt | date:'dd-MMM-yyyy'}}</p>
-				</div>
-			</div>
+<ion-view view-title="Home" class="text-center">	
+	<ion-content class="has-header" style="margin-top:34px;">
+		<ion-refresher
+		pulling-text="Pull to refresh..."
+		on-refresh="loadVideoList()" spinner="none">
+	</ion-refresher>
+	<div class="list card" ng-repeat="video in videos" ng-click="playVideo(video)">
+		<div class="item item-image">
+			<img ng-src="{{video.snippet.thumbnails.high.url}}">
 		</div>
-	</ion-content>
-	<ion-tabs class="tabs-positive tabs-icon-top">
-		<ion-tab title="Recent" icon-on="ion-ios-clock" icon-off="ion-ios-clock-outline"></ion-tab>
-		<ion-tab title="All Video" icon-on="ion-ios-videocam" icon-off="ion-ios-videocam-outline"></ion-tab>
-	</ion-tabs>
+		<div class="item item-text-wrap">
+			<h2>{{video.snippet.title}}</h2>
+			<p> created date : {{video.snippet.publishedAt | date:'dd-MMM-yyyy'}}</p>
+		</div>
+	</div>
+	<div class="list card" ng-show="videonotavailabel" >
+		<div class="item item-text-wrap">
+			<p>Video list not available.</p> 
+		</div>
+	</div>
+</ion-content>
+<ion-tabs ion-footer class="tabs-positive tabs-icon-top">
+	<ion-tab title="Recent" icon-on="ion-ios-clock" icon-off="ion-ios-clock-outline"></ion-tab>
+	<ion-tab title="All Video" icon-on="ion-ios-videocam" icon-off="ion-ios-videocam-outline"></ion-tab>
+</ion-tabs>
 </ion-view>

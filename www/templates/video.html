@@ -1,5 +1,19 @@
-<ion-view view-title="Browse">
-  <ion-content>
-    <h1>Browse</h1>
-  </ion-content>
+<ion-view view-title="Video View">
+	<ion-content>
+		<div class="list card" ng-hide="videonotavailabel">
+			<div class="item">
+				<h2>{{videoDetails.title}}</h2>
+				<p>{{videoDetails.publishedAt | date:'dd-MMM-yyyy' }}</p>
+			</div>
+			<div class="item item-body">
+				<div class="embed-responsive embed-responsive-16by9"><youtube-video class="embed-responsive-item" video-id="videoid"></youtube-video></div>
+				<p>{{videoDetails.description}}</p>
+			</div>
+		</div>
+		<div class="list card" ng-if="videonotavailabel" >
+			<div class="item item-text-wrap">
+				<p>Video not available.</p> 
+			</div>
+		</div>
+	</ion-content>
 </ion-view>
